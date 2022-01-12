@@ -32,15 +32,7 @@ class OptionView(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
 
 
-# @api_view(['GET'])
-# def get_user_answers(request, user_id):
-#     """Returns user answers by its id."""
-#     answers = Answer.objects.filter(user_id=user_id)
-#     serializer = AnswerSerializer(answers, many=True)
-#     return Response(serializer.data)
-
 class UserAnswers(viewsets.ModelViewSet):
-    # queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
 
     def get_queryset(self):

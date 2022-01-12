@@ -5,7 +5,6 @@ from .models import Poll, Question, Answer, Option
 
 class PollInline(admin.TabularInline):
     model = Question
-    # fields = ['name', 'description', 'questions']
 
 class PollAdmin(admin.ModelAdmin):
     inlines = [PollInline]
