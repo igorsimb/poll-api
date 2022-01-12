@@ -241,7 +241,7 @@ URL: http://localhost:8000/answers/
 
 <br>
 
-#### Просмотр всех ответов пользователей
+#### Просмотр всех ответов пользователя
 Метод: GET
 
 URL: http://localhost:8000/answers/%user_id%/
