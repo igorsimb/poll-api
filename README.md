@@ -86,6 +86,12 @@ Superuser created successfully.
 python manage.py runserver
 ```
 ## Документация к API
+### Схема 
+https://poll-api-project.herokuapp.com/api/schema
+
+### Документация (Swagger)
+https://poll-api-project.herokuapp.com/api/documentation
+
 ### Авторизация в системе
 Перед авторизацией убедитесь, что авторизируемый пользователь присутствует в базе Users
 

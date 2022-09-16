@@ -7,7 +7,6 @@ from .views import (
     AnswerView,
     OptionView,
     UserAnswers,
-    # get_user_answers,
     ActivePollsView,
 )
 
@@ -23,5 +22,4 @@ router.register('options', OptionView)
 urlpatterns = [
     path('', include(router.urls)),
     path('answers/user/<int:user_id>/', UserAnswers.as_view({'get': 'list'})),
-    # path('active-polls/', ActivePolls.as_view({'get': 'list'})),
 ]

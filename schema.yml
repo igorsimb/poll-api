@@ -1,0 +1,982 @@
+openapi: 3.0.3
+info:
+  title: Poll API Project
+  version: 1.0.0
+  description: API for creating poll apps
+paths:
+  /active-polls/:
+    get:
+      operationId: active_polls_list
+      description: |-
+        Returns active polls. An active poll is one that satisfies the following condition:
+        poll started before current user date and has not ended yet
+      tags:
+      - active-polls
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Poll'
+          description: ''
+    post:
+      operationId: active_polls_create
+      description: |-
+        Returns active polls. An active poll is one that satisfies the following condition:
+        poll started before current user date and has not ended yet
+      tags:
+      - active-polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Poll'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+  /active-polls/{id}/:
+    get:
+      operationId: active_polls_retrieve
+      description: |-
+        Returns active polls. An active poll is one that satisfies the following condition:
+        poll started before current user date and has not ended yet
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - active-polls
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+    put:
+      operationId: active_polls_update
+      description: |-
+        Returns active polls. An active poll is one that satisfies the following condition:
+        poll started before current user date and has not ended yet
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - active-polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Poll'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+    patch:
+      operationId: active_polls_partial_update
+      description: |-
+        Returns active polls. An active poll is one that satisfies the following condition:
+        poll started before current user date and has not ended yet
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - active-polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPoll'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPoll'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPoll'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+    delete:
+      operationId: active_polls_destroy
+      description: |-
+        Returns active polls. An active poll is one that satisfies the following condition:
+        poll started before current user date and has not ended yet
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - active-polls
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /answers/:
+    get:
+      operationId: answers_list
+      tags:
+      - answers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Answer'
+          description: ''
+    post:
+      operationId: answers_create
+      tags:
+      - answers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Answer'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+          description: ''
+  /answers/{id}/:
+    get:
+      operationId: answers_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this answer.
+        required: true
+      tags:
+      - answers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+          description: ''
+    put:
+      operationId: answers_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this answer.
+        required: true
+      tags:
+      - answers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Answer'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+          description: ''
+    patch:
+      operationId: answers_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this answer.
+        required: true
+      tags:
+      - answers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnswer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnswer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnswer'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+          description: ''
+    delete:
+      operationId: answers_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this answer.
+        required: true
+      tags:
+      - answers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /answers/user/{user_id}/:
+    get:
+      operationId: answers_user_list
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - answers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Answer'
+          description: ''
+  /options/:
+    get:
+      operationId: options_list
+      tags:
+      - options
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Option'
+          description: ''
+    post:
+      operationId: options_create
+      tags:
+      - options
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Option'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Option'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Option'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Option'
+          description: ''
+  /options/{id}/:
+    get:
+      operationId: options_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option.
+        required: true
+      tags:
+      - options
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Option'
+          description: ''
+    put:
+      operationId: options_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option.
+        required: true
+      tags:
+      - options
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Option'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Option'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Option'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Option'
+          description: ''
+    patch:
+      operationId: options_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option.
+        required: true
+      tags:
+      - options
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOption'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOption'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOption'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Option'
+          description: ''
+    delete:
+      operationId: options_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option.
+        required: true
+      tags:
+      - options
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /polls/:
+    get:
+      operationId: polls_list
+      tags:
+      - polls
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Poll'
+          description: ''
+    post:
+      operationId: polls_create
+      tags:
+      - polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Poll'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+  /polls/{id}/:
+    get:
+      operationId: polls_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - polls
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+    put:
+      operationId: polls_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Poll'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Poll'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+    patch:
+      operationId: polls_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - polls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPoll'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPoll'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPoll'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Poll'
+          description: ''
+    delete:
+      operationId: polls_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this poll.
+        required: true
+      tags:
+      - polls
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /questions/:
+    get:
+      operationId: questions_list
+      tags:
+      - questions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+          description: ''
+    post:
+      operationId: questions_create
+      tags:
+      - questions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Question'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Question'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Question'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Question'
+          description: ''
+  /questions/{id}/:
+    get:
+      operationId: questions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this question.
+        required: true
+      tags:
+      - questions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Question'
+          description: ''
+    put:
+      operationId: questions_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this question.
+        required: true
+      tags:
+      - questions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Question'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Question'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Question'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Question'
+          description: ''
+    patch:
+      operationId: questions_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this question.
+        required: true
+      tags:
+      - questions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedQuestion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedQuestion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedQuestion'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Question'
+          description: ''
+    delete:
+      operationId: questions_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this question.
+        required: true
+      tags:
+      - questions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Answer:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        user_id:
+          type: integer
+          nullable: true
+        poll:
+          type: string
+          format: uri
+        question:
+          type: string
+          format: uri
+        text:
+          type: string
+          nullable: true
+      required:
+      - id
+      - poll
+      - question
+      - url
+    Option:
+      type: object
+      properties:
+        text:
+          type: string
+          nullable: true
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        question:
+          type: string
+          format: uri
+      required:
+      - id
+      - question
+      - url
+    PatchedAnswer:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        user_id:
+          type: integer
+          nullable: true
+        poll:
+          type: string
+          format: uri
+        question:
+          type: string
+          format: uri
+        text:
+          type: string
+          nullable: true
+    PatchedOption:
+      type: object
+      properties:
+        text:
+          type: string
+          nullable: true
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        question:
+          type: string
+          format: uri
+    PatchedPoll:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+    PatchedQuestion:
+      type: object
+      properties:
+        text:
+          type: string
+          maxLength: 255
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        poll:
+          type: string
+          format: uri
+    Poll:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+      required:
+      - description
+      - end_date
+      - id
+      - name
+      - start_date
+      - url
+    Question:
+      type: object
+      properties:
+        text:
+          type: string
+          maxLength: 255
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        poll:
+          type: string
+          format: uri
+      required:
+      - id
+      - poll
+      - text
+      - url
+    TypeEnum:
+      enum:
+      - FREE
+      - SING
+      - MULT
+      type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
